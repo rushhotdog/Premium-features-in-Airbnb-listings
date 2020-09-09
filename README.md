@@ -10,3 +10,5 @@
     The dataset used to tackle this question is from [Inside Airbnb](http://insideairbnb.com/get-the-data.html),a website created by Murray Cox. This study will use datasets of NYC collected on August 19th 2019 and apply machine learing techniques to identify premium features. This dataset and the preprocessed dataset can be also be found on this [google drive](https://drive.google.com/drive/folders/10YZMuBSQ3WaaT77UT2nNNkRryV5G0QnU?usp=sharing). Additional code can also be found on this [google colab](https://colab.research.google.com/drive/1umxFAd7GMGCf99Y8nmntMb4Wc7y3YwU6?usp=sharing).
     
 ## Preprocessing
+- Dataset includes over 40,000 samples and 200 initial features such as host identifications, property types, and amenities.
+- A snippet of the data:

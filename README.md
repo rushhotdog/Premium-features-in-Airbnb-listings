@@ -16,7 +16,7 @@
 - Applied dummification and used [TextBlob](https://textblob.readthedocs.io/en/dev/) to extract polarity (positive/negative emotions) and subjectivity scores from certain text format features.
 - A baseline linear regression model is also applied here to help feature selection and engineering.
 
-# Models
+## Models
 - Linear regression model is applied using *Statsmodels' Ordinary Least Square (OLS)*. A snippet of the OLS summary table is shown below:
 ![OLS summary table](img/ols-snippet.png)
 - By optimizing the r-squared score, the model can use more of the features to explain the variance in prices. The more accurate the model can predict the pricing, the better the model has captured the features and their importance to pricing. However, the data is not standarized during the process, I can't directly compare the coefficients. Violin plots that captures the price variance and distribution are used as a proxy to visualize the effects of each features on price. Below is an example of using violin plot in this case:
@@ -30,7 +30,10 @@
 - Even though the model might not be most optimized, its feature importance still gives us some useful information on the relationship between features and prices.
 ![feature importance](img/rf_feature_importance.png)
 
-# Retrospect
+## Retrospect
 - Multicollinearity was a persistent issue when working on this dataset. One way to deal with this is to further reduce the dataset's dimensions. Could consider using data compression techniques like principle component analysis.
 - More data is most definitely going to provide more insight on these features. However, the time in which the data was collected and the location are two important factor to consider when including additional datasets.
 - Auxillary data should also be considered.
+
+## Tech used
+Python, Pandas, Numpy, Matplotlib, Scikit-learn, Statsmodels, TextBlob

@@ -11,4 +11,26 @@
     
 ## Preprocessing
 - Dataset includes over 40,000 samples and 200 initial features such as host identifications, property types, and amenities.
-- A snippet of the data:
+- A snippet of the data (only a few selected features are shown in this snippet):
+![data snippet](img/data-snippet.png)
+- Applied dummification and used [TextBlob](https://textblob.readthedocs.io/en/dev/) to extract polarity (positive/negative emotions) and subjectivity scores from certain text format features.
+- A baseline linear regression model is also applied here to help feature selection and engineering.
+
+# Models
+- Linear regression model is applied using *Statsmodels' Ordinary Least Square (OLS)*. A snippet of the OLS summary table is shown below:
+![OLS summary table](img/ols-snippet.png)
+- By optimizing the r-squared score, the model can use more of the features to explain the variance in prices. The more accurate the model can predict the pricing, the better the model has captured the features and their importance to pricing. However, the data is not standarized during the process, I can't directly compare the coefficients. Violin plots that captures the price variance and distribution are used as a proxy to visualize the effects of each features on price. Below is an example of using violin plot in this case:
+![violin plot](img/violin1.png)
+
+- A random forest model (RFM) is also used for two reasons:
+    - There are over 400 features after preprocessing. A random forest regressor is very good at dealing with data with many features.
+    - Random forest model's features importance attribute is very helpful when trying to identify premium features.
+- The initial fitting of the RFM performed much better than linear regression model on the training set with a r-squared score of 0.887. However, the model is overfitted and the r-squared on testing set is 0.583
+- Grid search is applied to optimize the RFM. Unfortunately, the grid search was not able to complete running before the deadline of this project. The hyperparameters were selected manually.
+- Even though the model might not be most optimized, its feature importance still gives us some useful information on the relationship between features and prices.
+![feature importance](img/rf_feature_importance.png)
+
+# Retrospect
+- Multicollinearity was a persistent issue when working on this dataset. One way to deal with this is to further reduce the dataset's dimensions. Could consider using data compression techniques like principle component analysis.
+- More data is most definitely going to provide more insight on these features. However, the time in which the data was collected and the location are two important factor to consider when including additional datasets.
+- Auxillary data should also be considered.
